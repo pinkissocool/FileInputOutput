@@ -13,7 +13,8 @@ public class Demo {
         try {
             f.createNewFile(); // this method will create the file if it does not exist; if it does exist, it does nothing
             FileWriter fw = new FileWriter("src/myfile.txt");
-            fw.write("hello");
+            fw.write("hello2");
+
             fw.close();
         } catch (IOException e) {
             System.out.println("ERROR! + " + e.getMessage());

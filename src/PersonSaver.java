@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class PersonSaver
 {
@@ -20,25 +21,25 @@ public class PersonSaver
             String name = "";
             String hobby = "";
             String age = "";
+            ArrayList<Person> personList = new ArrayList<Person>();
 
             // reading from the file line by line
             while (s.hasNextLine()) {
                 String data = s.nextLine();
-                if (line == 1) {
+                if (line%3 == 1) {
                     name = data;
                 }
-                if (line == 2) {
+                if (line%3 == 2) {
                     hobby = data;
                 }
-                if (line == 3){
+                if (line%3 == 0){
                     age = data;
+                    personList.add(new Person(name, hobby, data));
                 }
                 line++;
             }
             s.close(); // close scanner
 
-            Person p =  new Person(name, hobby, age);
-            update(p);
 
             System.out.println("Good bye!");
         }
@@ -64,7 +65,8 @@ public class PersonSaver
         System.out.println("2: Change my hobby");
         System.out.println("3. Change my age");
         System.out.println("4: Change hobby, name, and age");
-        System.out.println("5: Exit");
+        System.out.println("5. Add new Person");
+        System.out.println("6: Exit");
         Scanner s = new Scanner(System.in);
         System.out.print("Enter your option: ");
         String option = s.nextLine();
@@ -87,7 +89,10 @@ public class PersonSaver
             age = s.nextLine();
             person.setAge(age);
         }
-        if (!option.equals("5"))
+        if (option.equals("5")){
+            createPerson();
+        }
+        if (!option.equals("6"))
         {
             person.save();  // calls the save() method in the Person class which saves to file
         }

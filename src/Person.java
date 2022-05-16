@@ -7,16 +7,19 @@ public class Person {
     private String hobby;
     private String age;
 
+
     public Person() {
         name = "";
         hobby = "";
         age = "";
+
     }
 
     public Person(String name, String hobby, String age) {
         this.name = name;
         this.hobby = hobby;
         this.age = age;
+
     }
 
     public String getName() {
